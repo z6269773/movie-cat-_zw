@@ -1,0 +1,12 @@
+<h1>{{subjects.title}}</h1>
+<div class="list-group">
+	<a class="list-group-item" href="{{subjects.alt}}">
+		<p class="media-left"> <img ng-src="{{subjects.images.medium}}" alt=""> </p>
+		<div class="media-body">
+			<h4 class="media-heading">剧情介绍</h4>
+			<p class="list-group-item-text">{{subjects.summary}}</p>
+			<h4 class="media-heading">演员</h4> <span ng-repeat="cast in subjects.casts">{{cast.name+($last ? '' : '、')}}</span>
+		</div>
+	</a>
+</div>
+<div class="loader" ng-show="loading"></div>

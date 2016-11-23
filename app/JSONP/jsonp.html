@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jsonp</title>
+</head>
+<body>
+	<button id="btn">点击获取json数据</button>
+</body>
+<script src="jsonp.js"></script>
+<script>
+		document.getElementById('btn').addEventListener('click',function () {
+			// body...
+			// $getJSON(url,data,callback)
+			zwJsonp('https://api.douban.com/v2/movie/in_theaters',{
+				count:3,
+				start:1
+			},function(data) {
+				// body...
+				console.log(data);//这里就获取到服务器的数据了
+			});
+		},false);
+</script>
+</html>

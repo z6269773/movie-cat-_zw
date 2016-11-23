@@ -1,0 +1,41 @@
+<!-- <h1 class="page-header" ng-if="errMsg">{{errMsg}}</h1> -->
+<h1 class="page-header">{{title}}</h1>
+<div class="list-group">
+	<a href="#/detail/{{item.id}}" class="list-group-item" ng-repeat="item in subjects">
+		<div class="media">
+			<span class="badge pull-right">{{item.rating.average}}</span>
+			<div class="media-left media-middle">
+				<img class="media-object" ng-src="{{item.images.medium}}" alt="{{item.images.small}}">
+			</div>
+			<div class="media-body">
+				<h2 class="media-heading">{{item.title}}</h2>
+				<p>导演：<span ng-repeat="director in item.directors">{{director.name}}<span ng-if="!$last">、</span></span></p>
+				<p>演员：<span ng-repeat="cast in item.casts">{{cast.name}}<span ng-if="!$last">、</span></span></p>
+			</div>
+		</div>
+	</a>
+</div>
+<uib-pager total-items="title" items-per-page="size" align="false" ng-model="currentPage"></uib-pager>
+<p class="muted">总共：<span ng-bind="total"></span>条,共：<span ng-bind="pages"></span>页</p>
+<ul class="pager">
+  <li ng-click="prior()" ng-class="{disabled:begin==1}"><a>上一页</a></li>
+  <li ng-click="next()" ng-class="{disabled:begin==pages}"><a>下一页</a></li>
+</ul>
+<!-- 这是进度条 -->
+<div class="modal fade"  ng-class="{in:loading}" ng-hide="!loading" style="display: block;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button ng-click="hide()" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">数据加载中..</h4>
+      </div>
+      <div class="modal-body">
+        <div class="progress">
+          <div class="progress-bar progress-bar-striped active" role="progressbar" style="width: 100%;">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
